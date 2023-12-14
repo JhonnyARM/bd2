@@ -33,27 +33,47 @@ jobs:
           --url http://161.132.37.246:5000/api/Cliente \
           --fail --silent --show-error
 
-    - name: Test POST /api/Cliente to create a new user
+    - name: Test POST /api/Cliente to create a new user with random data
       run: |
+        # Genera nombres y apellidos aleatorios
+        NAME=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 6 | head -n 1)
+        APELLIDO_PATERNO=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 8 | head -n 1)
+        APELLIDO_MATERNO=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 8 | head -n 1)
+        CELULAR=$((RANDOM%900000000+100000000)) # Esto generará un número aleatorio de 9 dígitos
+        GENDER=$([ $((RANDOM%2)) -eq 1 ] && echo "M" || echo "F")
+
+        # Crea un nuevo JSON con los datos aleatorios
+        DATA_JSON=$(jq -n \
+                  --arg nm "$NAME" \
+                  --arg app "$APELLIDO_PATERNO" \
+                  --arg apm "$APELLIDO_MATERNO" \
+                  --arg cl "$CELULAR" \
+                  --arg gd "$GENDER" \
+                  '{Nombre: $nm, ApellidoPaterno: $app, ApellidoMaterno: $apm, Celular: $cl, Genero: $gd}')
+
+        echo "Generated data: $DATA_JSON"
+
+        # Envía la solicitud POST con los datos generados
         response=$(curl -s -o response.json -w "%{http_code}" --request POST \
           --url http://161.132.37.246:5000/api/Cliente \
           --header 'Content-Type: application/json' \
-          --data @new-user-data.json)
-        
-        cat response.json
+          --data "$DATA_JSON")
+
         if [ "$response" -ne "201" ]; then
-          echo "Failed to create a new user"
+          echo "Failed to create a new user with random data"
           echo "Response HTTP Status: $response"
+          cat response.json
           exit 1
         else
-          echo "New user created successfully"
+          echo "New user with random data created successfully"
           userId=$(jq '.id' response.json)
           echo "New User ID: $userId"
         fi
+      shell: bash
 
     - name: Test DELETE /api/Cliente to delete the user
       run: |
-        # Ensure the user ID is not empty or null
+        # Asegúrate de que el ID del usuario no esté vacío o sea nulo
         if [ -z "$userId" ] || [ "$userId" == "null" ]; then
           echo "User ID is empty or null"
           exit 1
@@ -71,4 +91,5 @@ jobs:
         fi
       env:
         userId: ${{ steps.create_user.outputs.userId }}
+
 
