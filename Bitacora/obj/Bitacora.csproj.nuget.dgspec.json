@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Bitacora\\Bitacora.csproj": {}
+    "C:\\Users\\Usuario\\bd2\\Bitacora\\Bitacora.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Bitacora\\Bitacora.csproj": {
+    "C:\\Users\\Usuario\\bd2\\Bitacora\\Bitacora.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Bitacora\\Bitacora.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\bd2\\Bitacora\\Bitacora.csproj",
         "projectName": "Bitacora",
-        "projectPath": "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Bitacora\\Bitacora.csproj",
+        "projectPath": "C:\\Users\\Usuario\\bd2\\Bitacora\\Bitacora.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Bitacora\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\bd2\\Bitacora\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

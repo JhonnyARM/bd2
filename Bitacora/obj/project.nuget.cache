@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rxQjHs0QLSwrZdKntUD6PXpEbou7JF31jC93krpJ8ybqUuwm5WY1eGcoIrjPb2TmvKe/Xd4Gt9HFytWDcfXzWw==",
+  "dgSpecHash": "WeFPmI5S+5xHmPbIMeV7Pn5gcYd38GZoWnbyqwEUfODhztcQayLJEnBvH21lXR/tt2w9Zd9X3tqdm8gA3WBCyg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Bitacora\\Bitacora.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\bd2\\Bitacora\\Bitacora.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
