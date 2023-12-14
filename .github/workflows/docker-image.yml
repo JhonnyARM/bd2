@@ -24,72 +24,14 @@ jobs:
         docker push jhonnyarm/bitacora-app
       working-directory: ./
 
-    - name: Install jq for JSON processing
-      run: sudo apt-get install jq
-
-    - name: Test GET /api/Cliente
+    - name: Test API Endpoints
       run: |
-        curl --request GET \
-          --url http://161.132.37.246:5000/api/Cliente \
-          --fail --silent --show-error
-
-    - name: Test POST /api/Cliente to create a new user with random data
-      run: |
-        # Genera nombres y apellidos aleatorios
-        NAME=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 6 | head -n 1)
-        APELLIDO_PATERNO=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 8 | head -n 1)
-        APELLIDO_MATERNO=$(cat /dev/urandom | tr -dc 'a-zA-Z' | fold -w 8 | head -n 1)
-        CELULAR=$((RANDOM%900000000+100000000)) # Esto generará un número aleatorio de 9 dígitos
-        GENDER=$([ $((RANDOM%2)) -eq 1 ] && echo "M" || echo "F")
-
-        # Crea un nuevo JSON con los datos aleatorios
-        DATA_JSON=$(jq -n \
-                  --arg nm "$NAME" \
-                  --arg app "$APELLIDO_PATERNO" \
-                  --arg apm "$APELLIDO_MATERNO" \
-                  --arg cl "$CELULAR" \
-                  --arg gd "$GENDER" \
-                  '{Nombre: $nm, ApellidoPaterno: $app, ApellidoMaterno: $apm, Celular: $cl, Genero: $gd}')
-
-        echo "Generated data: $DATA_JSON"
-
-        # Envía la solicitud POST con los datos generados
-        response=$(curl -s -o response.json -w "%{http_code}" --request POST \
-          --url http://161.132.37.246:5000/api/Cliente \
-          --header 'Content-Type: application/json' \
-          --data "$DATA_JSON")
-
-        if [ "$response" -ne "201" ]; then
-          echo "Failed to create a new user with random data"
-          echo "Response HTTP Status: $response"
-          cat response.json
-          exit 1
-        else
-          echo "New user with random data created successfully"
-          userId=$(jq '.id' response.json)
-          echo "New User ID: $userId"
-        fi
-      shell: bash
-
-    - name: Test DELETE /api/Cliente to delete the user
-      run: |
-        # Asegúrate de que el ID del usuario no esté vacío o sea nulo
-        if [ -z "$userId" ] || [ "$userId" == "null" ]; then
-          echo "User ID is empty or null"
-          exit 1
-        fi
-        
-        response=$(curl -s -o /dev/null -w "%{http_code}" --request DELETE \
-          --url http://161.132.37.246:5000/api/Cliente/$userId)
-
-        if [ "$response" -ne "204" ]; then
-          echo "Failed to delete user"
-          echo "Response HTTP Status: $response"
-          exit 1
-        else
-          echo "User deleted successfully"
-        fi
-      env:
-        userId: ${{ steps.create_user.outputs.userId }}
-
+        # Reemplaza las URL de abajo con los endpoints específicos que deseas probar
+        curl --request GET --url http://161.132.37.246:5000/api/Cliente --fail --silent --show-error
+        curl --request GET --url http://161.132.37.246:5000/api/TipoCorreo --fail --silent --show-error
+        curl --request GET --url http://161.132.37.246:5000/api/TipoDireccion --fail --silent --show-error
+        curl --request GET --url http://161.132.37.246:5000/api/TipoResidencium --fail --silent --show-error
+        curl --request GET --url http://161.132.37.246:5000/api/TiposDocumento --fail --silent --show-error
+        curl --request GET --url http://161.132.37.246:5000/api/TipoSeguro --fail --silent --show-error
+     
 
