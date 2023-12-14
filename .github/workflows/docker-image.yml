@@ -2,14 +2,14 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]  
+    branches: [ main ]
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
     - name: Check Out Repo
-      uses: actions/checkout@v2  
+      uses: actions/checkout@v2
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v1
@@ -22,5 +22,11 @@ jobs:
         docker build -t bitacora-app ./Bitacora
         docker tag bitacora-app jhonnyarm/bitacora-app
         docker push jhonnyarm/bitacora-app
-      working-directory: ./ 
-
+      working-directory: ./
+      
+    - name: Test API Endpoints
+      run: |
+        # Reemplaza las URL de abajo con los endpoints específicos que deseas probar
+        curl --request GET --url http://161.132.37.246:5000/api/Cliente --fail --silent --show-error
+        curl --request GET --url http://161.132.37.246:5000/api/TipoCorreo --fail --silent --show-error
+        # Añade más comandos curl según sea necesario para cubrir tus pruebas de API
