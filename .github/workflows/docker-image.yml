@@ -11,27 +11,27 @@ jobs:
     - name: Check Out Repo
       uses: actions/checkout@v2
 
-    - name: Log in to Docker Hub
+    - name: Registro con secretos a DOCKER
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    - name: Build and push Docker image for bitacora-app
+    - name: Build and push de la imagen de docker para BITACORA
       run: |
         docker build -t bitacora-app ./Bitacora
         docker tag bitacora-app jhonnyarm/bitacora-app
         docker push jhonnyarm/bitacora-app
       working-directory: ./
 
-    - name: Build and push Docker image for clientes-api
+    - name: Build and push de la imagen de Docker para Clientes_API
       run: |
-        docker build -t clientes-api ./ClienteAPI # Asegúrate de que la ruta al Dockerfile sea correcta
+        docker build -t clientes-api ./Gestion\ de\ Clientes_U1/ClienteAPI
         docker tag clientes-api jhonnyarm/clientes-api
         docker push jhonnyarm/clientes-api
       working-directory: ./
 
-    - name: Test API Endpoints
+    - name: Test API metodo GET
       run: |
         curl --request GET --url http://161.132.37.246:5000/api/Cliente --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TipoCorreo --fail --silent --show-error
@@ -39,6 +39,3 @@ jobs:
         curl --request GET --url http://161.132.37.246:5000/api/TipoResidencium --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TiposDocumento --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TipoSeguro --fail --silent --show-error
-
-     
-
