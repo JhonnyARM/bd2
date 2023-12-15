@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-
+// paquete
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 use Illuminate\Support\Facades\Log;

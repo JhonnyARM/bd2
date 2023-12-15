@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Gestion de Clientes_U1\\ClienteAPI\\ClienteAPI.csproj": {}
+    "C:\\Users\\hp\\bd2\\Gestion de Clientes_U1\\clienteAPI\\ClienteAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Gestion de Clientes_U1\\ClienteAPI\\ClienteAPI.csproj": {
+    "C:\\Users\\hp\\bd2\\Gestion de Clientes_U1\\clienteAPI\\ClienteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Gestion de Clientes_U1\\ClienteAPI\\ClienteAPI.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\bd2\\Gestion de Clientes_U1\\clienteAPI\\ClienteAPI.csproj",
         "projectName": "ClienteAPI",
-        "projectPath": "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Gestion de Clientes_U1\\ClienteAPI\\ClienteAPI.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\proyecto-2023-ii-bdii-u2-grupo-1-ac-jc-jj-jr-jv\\Gestion de Clientes_U1\\ClienteAPI\\obj\\",
+        "projectPath": "C:\\Users\\hp\\bd2\\Gestion de Clientes_U1\\clienteAPI\\ClienteAPI.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\bd2\\Gestion de Clientes_U1\\clienteAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
