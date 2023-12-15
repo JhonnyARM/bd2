@@ -17,21 +17,28 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    - name: Build and push Docker image
+    - name: Build and push Docker image for bitacora-app
       run: |
         docker build -t bitacora-app ./Bitacora
         docker tag bitacora-app jhonnyarm/bitacora-app
         docker push jhonnyarm/bitacora-app
       working-directory: ./
 
+    - name: Build and push Docker image for clientes-api
+      run: |
+        docker build -t clientes-api ./ClienteAPI # Asegúrate de que la ruta al Dockerfile sea correcta
+        docker tag clientes-api jhonnyarm/clientes-api
+        docker push jhonnyarm/clientes-api
+      working-directory: ./
+
     - name: Test API Endpoints
       run: |
-        # Reemplaza las URL de abajo con los endpoints específicos que deseas probar
         curl --request GET --url http://161.132.37.246:5000/api/Cliente --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TipoCorreo --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TipoDireccion --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TipoResidencium --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TiposDocumento --fail --silent --show-error
         curl --request GET --url http://161.132.37.246:5000/api/TipoSeguro --fail --silent --show-error
+
      
 
